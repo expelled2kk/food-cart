@@ -54,7 +54,7 @@ class Cart:
         if key not in PROMO_CODES:
             raise PromoError("Промокод недійсний")
         kind, value, valid_until, min_order = PROMO_CODES[key]
-        if today > valid_until:
+        if today >= valid_until:
             raise PromoError("Термін дії промокоду минув")
         subtotal = self.subtotal()
         if subtotal < min_order:
